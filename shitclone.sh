@@ -4,7 +4,7 @@ LIST_REPOS="/tmp/repos.json"
 DEST_APPS="$HOME/apps"
 
 # TO DO: this should be passed by an argument and not written stupidly here,
-# 		 I'm just in a hurry 'coz the my harddisk is fucking broken
+# 		 I'm just in a hurry 'coz my harddisk is fucking broken
 GITHUB_USER="..."
 GITHUB_TOKEN="..."
 GITHUB_ORG="..."
@@ -12,10 +12,10 @@ GITHUB_TEAM_ID="..."
 
 init() {
 	echo "[#] Getting all repos..."
-	REPOS_ENDPOINT="https://$GITHUB_AT:@api.github.com/orgs/${GITHUB_ORG}/repos?per_page=200" # for team "/teams/:team_id/repos", for user (/users/:username/repos)
+	REPOS_ENDPOINT="https://$GITHUB_AT:@api.github.com/orgs/${GITHUB_ORG}/repos?per_page=200" # for team "/teams/:team_id/repos", for user (/users/:username/repos) # TO DO
 	REPOS_GET="curl -s "${REPOS_ENDPOINT}""
 	[[ ! -z $GITHUB_USER || ! -z $GITHUB_TOKEN ]] && REPOS_GET+=" -u ${GITHUB_USER}:${GITHUB_TOKEN}"
-	REPOS_LIST=$(echo ${REPOS_GET} | jq '.[] | select((.fork)==false)' | jq '.ssh_url' | sed "s/\"//g" > ${LIST_REPOS})
+	REPOS_LIST=$(echo $(eval "$REPOS_GET") | jq '.[] | select((.fork)==false)' | jq '.ssh_url' | sed "s/\"//g" > ${LIST_REPOS})
 	doClone
 }
 
