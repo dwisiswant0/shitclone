@@ -15,6 +15,7 @@ Just it.
 
 # Workaround
 In case you want to run `sonar-scanner`.
+
 `./shitclone.sh --exec="sonar-scanner -Dsonar.projectKey=$PWD -Dsonar.projectBaseDir=$PWD"`
 
 # Epilogue
