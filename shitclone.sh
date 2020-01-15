@@ -53,7 +53,7 @@ doSomeShit() {
 
 showUsage() {
 	echo "Usage: ${0##*/} -e=[shell...]"
-	echo -e " -e, --exec\tDo some shit inside each of repository,"
+	echo -e " -e, --exec\tDo some shit inside for each of repository,"
 	echo -e "\t\tshell or file exec"
 	echo -e " -h\t\tThis help text"
 }
